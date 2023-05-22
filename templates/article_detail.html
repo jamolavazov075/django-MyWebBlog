@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Article Detail
+{% endblock title %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            {% if object.photo %}
+              <img src="{{ object.photo.url }}" alt="{{object.title}}" class="card-img-top">
+            {% endif %}
+            <h2 class="card-title">{{ object.title }}</h2>
+            <h4 class="card-subtitle mb-2 text-muted">Muallif: {{ object.author }} | {{ object.date }}</h4>
+            <p class="card-text">{{ object.body | safe }}</p>
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'article_edit' object.pk %}" class="btn btn-primary">Edit Article</a>
+              <a href="{% url 'article_delete' object.pk %}" class="btn btn-danger">Delete Article</a>
+              <a href="{% url 'article_list' %}" class="btn btn-secondary">All Articles</a>
+            </div>
+            <div class="card">
+              <div class="card-header">Izohlar:</div>
+              {% for comment in article.comments.all %}
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p>{{comment}}</p>
+                  <footer class="blockquote-footer">{{comment.author}}</footer>
+                </blockquote>
+              </div>
+              {%endfor%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

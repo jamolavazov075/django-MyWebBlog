@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup{% endblock title %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">{{ title }}</div>
+                <div class="card-body">
+                    <h2>SIGNUP</h2>
+                    <hr>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.username.label_tag }}<br>
+                            {{ form.username }}
+                            <p class="small">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            {{ form.first_name.label_tag }}<br>
+                            {{ form.first_name }}
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            {{ form.last_name.label_tag }}<br>
+                            {{ form.last_name }}
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            {{ form.email.label_tag }}<br>
+                            {{ form.email }}
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            {{ form.age.label_tag }}<br>
+                            {{ form.age }}
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            {{ form.password1.label_tag }}<br>
+                            {{ form.password1 }}
+                            <p class="small">Your password must contain at least 8 characters.
+                                <br>Your password can’t be a commonly used password.
+                                <br>Your password can’t be entirely numeric.</p>
+                        </div>
+                        <div class="form-group">
+                            {{ form.password2.label_tag }}<br>
+                            {{ form.password2 }}
+                        </div>
+                        <p>Enter the same password as before, for verification.</p>
+                        <button type="submit" class="btn btn-success">SIGNUP</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

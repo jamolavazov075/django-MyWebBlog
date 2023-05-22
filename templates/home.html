@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            {% if user.is_authenticated %}
+                <div class="col-md-6" style="background-color: rgb(209, 167, 167);">
+                    <h2>Welcome, {{ user.username }}!</h2>
+                    <p>It is Avazov Jamoliddin's blog <br>You can read different articles which depend on programming in this site!</p>
+                    <a href="{% url 'article_list' %}" class="btn btn-primary">Articles</a>
+                </div>
+            {% else %}
+                <div class="col-md-6">
+                    <p>You are not logged in!</p>
+                    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+                    <a href="{% url 'signup' %}" class="btn btn-success">Signup</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}
